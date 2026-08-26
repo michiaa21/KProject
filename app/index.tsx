@@ -5,64 +5,69 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from "react-native";
 import { router } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.home}>
-        <Text style={styles.logo}>🔎</Text>
+    <LinearGradient
+      colors={["#2563EB", "#93C5FD", "#F5F7FA"]}
+      style={styles.gradientContainer}
+    >
+      <SafeAreaView style={styles.container}>
+        <View style={styles.home}>
+          <Image
+            source={require("@/assets/images/logo.png")}
+            style={styles.logoImage}
+            resizeMode="contain"
+          />
 
-        <Text style={styles.title}>
-          LOST & FOUND
-        </Text>
+          <Text style={styles.title}>LOST & FOUND</Text>
 
-        <Text style={styles.school}>
-          SMKN 10 SURABAYA
-        </Text>
+          <Text style={styles.school}>SMKN 10 SURABAYA</Text>
 
-        <Text style={styles.description}>
-          Website sederhana untuk membantu siswa
-          menemukan kembali barang yang hilang
-          di lingkungan sekolah.
-        </Text>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => router.push("/barang")}
-        >
-          <Text style={styles.buttonText}>
-            🔎 Lihat Barang Temuan
+          <Text style={styles.description}>
+            Kehilangan barang atau menemukan barang milik orang lain?  
+            Anda bisa menelusuri daftar barang temuan melalui foto yang tersedia, sekaligus melaporkan barang yang belum ditemukan.  
+            Mari bersama membantu agar barang segera kembali ke pemiliknya.
           </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => router.push("/laporan")}
-        >
-          <Text style={styles.buttonText}>
-            📋 Laporkan Barang Hilang
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push("/barang")}
+          >
+            <Text style={styles.buttonText}>🔎 Lihat Barang Temuan</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.adminButton}
-          onPress={() => router.push("/login")}
-        >
-          <Text style={styles.adminText}>
-            Login Admin
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push("/laporan")}
+          >
+            <Text style={styles.buttonText}>📋 Laporkan Barang Hilang</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.adminButton}
+            onPress={() => router.push("/login")}
+          >
+            <Text style={styles.adminText}>Login Admin</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradientContainer: {
+    flex: 1,
+  },
+
   container: {
     flex: 1,
-    backgroundColor: "#F5F7FA",
+    backgroundColor: "transparent",
   },
 
   home: {
@@ -71,9 +76,10 @@ const styles = StyleSheet.create({
     padding: 25,
   },
 
-  logo: {
-    fontSize: 60,
-    textAlign: "center",
+  logoImage: {
+    width: 90,
+    height: 90,
+    alignSelf: "center",
     marginBottom: 15,
   },
 
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 23,
     marginVertical: 30,
-    color: "#667085",
+    color: "#4A5568",
   },
 
   button: {
@@ -121,7 +127,7 @@ const styles = StyleSheet.create({
 
   adminText: {
     textAlign: "center",
-    color: "#2563EB",
+    color: "#172B4D",
     fontWeight: "600",
   },
 });
